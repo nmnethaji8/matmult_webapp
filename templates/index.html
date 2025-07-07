@@ -1,0 +1,35 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multiply App</title>
+</head>
+<body>
+    <h1>Multiply Two Numbers</h1>
+    <form id="multiplyForm">
+        <input type="number" id="a" placeholder="Enter A" required>
+        <input type="number" id="b" placeholder="Enter B" required>
+        <button type="submit">Multiply</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        const form = document.getElementById('multiplyForm');
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const a = parseFloat(document.getElementById('a').value);
+            const b = parseFloat(document.getElementById('b').value);
+
+            const response = await fetch('/dev/multiply', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ a, b })
+            });
+
+            const result = await response.json();
+            document.getElementById('result').textContent = 
+                result.result !== undefined ? `Result: ${result.result}` : `Error: ${result.error}`;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+    "dev": {
+        "app_function": "app.app",
+        "aws_region": "eu-west-1",
+        "exclude": [
+            "boto3",
+            "dateutil",
+            "botocore",
+            "s3transfer",
+            "concurrent"
+        ],
+        "profile_name": "default",
+        "project_name": "matrix-webapp",
+        "runtime": "python3.12",
+        "s3_bucket": "zappa-matrix-nethaji-2025"
+    }
+}
